@@ -46,3 +46,34 @@ const exercises = [
     desc:  'Descubra a classificação etária pelo ano de nascimento.',
   },
 ]
+
+export default function home() {
+  return (
+    <div>
+      <div className='home-hero'>
+        <h1>Programação <span>Web com React</span></h1>
+        <p>Selecione um exercício para começar.</p>
+      </div>
+      
+      <div className='exercises-grid'>
+        {exercises.map((ex) => (
+
+          <Link
+            key={ex.num}
+            to={ex.path}      
+            className='exercise-card'
+          >
+            <div className='card-number'>exercício #{ex.num}</div>
+            <span className='card-icon'>{ex.icon}</span>
+            <div className='card-title'>{ex.title}</div>
+            <div className='card-desc'>{ex.desc}</div>
+            <span className='card-arrow'>→</span>
+          </Link>
+
+        ))}
+      </div>
+
+    </div>
+  )
+}
+
