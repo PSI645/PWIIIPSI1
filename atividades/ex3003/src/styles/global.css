@@ -12,3 +12,58 @@
 }
 
 /* O span dentro do h1 fica amarelo */
+.home-hero h1 span {
+  color: var(--cor-destaque);
+}
+
+.home-hero p {
+  font-size: 0.85rem;
+  color: var(--cor-texto-fraco);
+  max-width: 440px;
+  margin: 0 auto 2rem;
+}
+
+/* Número do exercício (ex: exercício #01) */
+.card-number {
+  font-size: 0.65rem;
+  color: #4a4a60;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.6rem;
+}
+
+/* Ícone emoji */
+.card-icon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+/* Título do card */
+.card-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--cor-texto);
+  margin-bottom: 0.3rem;
+}
+
+/* Descrição do card */
+.card-desc {
+  font-size: 0.72rem;
+  color: var(--cor-texto-fraco);
+  line-height: 1.5;
+}
+
+/* Seta no canto inferior direito do card */
+.card-arrow {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  color: #4a4a60;
+  transition: color 0.2s, transform 0.2s;
+}
+
+/* Seta fica amarela e se move ao passar o mouse */
+.exercise-card:hover .card-arrow {
+  color: var(--cor-destaque);
+  transform: translateX(4px);
+}
