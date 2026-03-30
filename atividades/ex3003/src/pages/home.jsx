@@ -1,4 +1,12 @@
 import { Link } from 'react-router-dom'
+// Link é usado assim no JSX:
+// <Link to='/trapezio'>Ir para Trapézio</Link>
+//
+// É equivalente ao HTML:
+// <a href='/trapezio'>Ir para Trapézio</a>
+//
+// A diferença: Link não recarrega a página inteira — React troca apenas o conteúdo.
+
 
 // Fora do componente — dados dos cards
 const exercises = [
