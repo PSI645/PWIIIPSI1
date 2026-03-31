@@ -47,7 +47,7 @@ const exercises = [
   },
 ]
 
-export default function Home() {
+export default function HomePage() {
   return (
     <div>
       <div className='home-hero'>
