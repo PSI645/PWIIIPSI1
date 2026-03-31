@@ -3,74 +3,76 @@ import { useState } from "react"
 // Este array fica FORA da função do componente
 // (não muda nunca, não precisa ser estado)
 const faixas = [
-    { limite: 2112.00, aliquota: 0 },
-    { limite: 2826.65, aliquota: 0.075 },
-    { limite: 3751.05, aliquota: 0.15 },
-    { limite: 4664.68, aliquota: 0.225 },
-    { limite: Infinity, aliquota: 0.275 },
+  { limite: 2112.00,  aliquota: 0     },
+  { limite: 2826.65,  aliquota: 0.075 },
+  { limite: 3751.05,  aliquota: 0.15  },
+  { limite: 4664.68,  aliquota: 0.225 },
+  { limite: Infinity, aliquota: 0.275 },
 ]
 // Infinity representa 'sem limite superior'
 
 function calcularIR(salario) {
-    // for...of percorre cada objeto do array faixas
-    for (const faixa of faixas) {
+  // for...of percorre cada objeto do array faixas
+  for (const faixa of faixas) {
 
-        // Se o salário couber nesta faixa...
-        if (salario <= faixa.limite) {
+    // Se o salário couber nesta faixa...
+    if (salario <= faixa.limite) {
 
-            // ...calcula e retorna imediatamente
-            const desconto = salario * faixa.aliquota
-            const liquido = salario - desconto
+      // ...calcula e retorna imediatamente
+      const desconto = salario * faixa.aliquota
+      const liquido  = salario - desconto
 
-            return { desconto, liquido, aliquota: faixa.aliquota }
-        }
-        // Se não couber, continua para a próxima faixa
+      return { desconto, liquido, aliquota: faixa.aliquota }
     }
+    // Se não couber, continua para a próxima faixa
+  }
 }
-
 export default function ImpostoRenda() {
 
-    const [salario, setSalario] = useState('')
-    const [resultado, setResultado] = useState(null)
-    const [erro, setErro] = useState('')
-    function calcular() {
-        setErro('')
-        setResultado(null)
+  const [salario,   setSalario]   = useState('')
+  const [resultado, setResultado] = useState(null)
+  const [erro,      setErro]      = useState('')
 
-        const s = parseFloat(salario)
+  function calcular() {
+    setErro('')
+    setResultado(null)
 
-        if (isNaN(s) || s < 0) {
-            setErro('Informe um salário válido.')
-            return
-        }
+    const s = parseFloat(salario)
 
-        // Chama a função auxiliar criada acima
-        const res = calcularIR(s)
-        setResultado(res)
+    if (isNaN(s) || s < 0) {
+      setErro('Informe um salário válido.')
+      return
     }
-}
-return (
+
+    // Chama a função auxiliar criada acima
+    const res = calcularIR(s)
+    setResultado(res)
+  }
+
+    return (
     <div>
-        <h1>Imposto de Renda</h1>
+      <h1>Imposto de Renda</h1>
 
-        <label>Salário Bruto (R$):</label>
-        <input
-            type='number'
-            value={salario}
-            onChange={(e) => setSalario(e.target.value)}
-            placeholder='ex: 3500'
-        />
+      <label>Salário Bruto (R$):</label>
+      <input
+        type='number'
+        value={salario}
+        onChange={(e) => setSalario(e.target.value)}
+        placeholder='ex: 3500'
+      />
 
-        {erro && <p style={{ color: 'red' }}>{erro}</p>}
-        <button onClick={calcular}>Calcular IR</button>
+      {erro && <p style={{ color: 'red' }}>{erro}</p>}
+      <button onClick={calcular}>Calcular IR</button>
 
-        {resultado !== null && (
-            <div>
-                <p>Salário bruto: R$ {parseFloat(salario).toFixed(2)}</p>
-                <p>Desconto IR:   R$ {resultado.desconto.toFixed(2)}</p>
-                <p>Salário líquido: R$ {resultado.liquido.toFixed(2)}</p>
-            </div>
-        )}
+      {resultado !== null && (
+        <div>
+          <p>Salário bruto: R$ {parseFloat(salario).toFixed(2)}</p>
+          <p>Desconto IR:   R$ {resultado.desconto.toFixed(2)}</p>
+          <p>Salário líquido: R$ {resultado.liquido.toFixed(2)}</p>
+        </div>
+      )}
     </div>
-)
+  )
+
+}
 
