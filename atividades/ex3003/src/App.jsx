@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
-import Home from './pages/HomePage'
 import HomePage from './pages/HomePage'
 
 export default function App(){
