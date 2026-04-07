@@ -1,111 +1,186 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #222;
+  background: #f5f5f5;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+/* Layout */
+header {
+  background: #1a3a6b;
+  padding: 1rem 2rem;
+}
+
+header h1 {
+  color: white;
+  font-size: 1.4rem;
+}
+
+nav {
+  background: #2e75b6;
+  padding: 0.5rem 2rem;
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
-h1,
+nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0.25rem 0;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+nav a.ativo {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
+
+main {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+footer {
+  background: #ddd;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 2rem;
+}
+
+/* Formulários */
 h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+  margin-bottom: 1.25rem;
+  color: #1a3a6b;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+h3 {
+  margin-bottom: 0.75rem;
+  color: #2e75b6;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #bbb;
   border-radius: 4px;
-  color: var(--text-h);
+  font-size: 1rem;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.campo-checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.campo-checkbox label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+button {
+  background: #2e75b6;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background: #1a3a6b;
+}
+
+/* Resultado / Cartão */
+.resultado {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+}
+
+.resultado p {
+  margin-bottom: 0.4rem;
+}
+
+.aprovado   { color: green;  font-weight: bold; }
+.recuperacao { color: orange; font-weight: bold; }
+.reprovado  { color: red;    font-weight: bold; }
+
+/* Histórico de partidas */
+.historico {
+  margin-top: 2rem;
+}
+
+.historico h3 {
+  margin-bottom: 1rem;
+}
+
+.partida-card {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.partida-card .placar {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.partida-card .detalhe {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.aviso-punicao {
+  color: #b00;
+  font-weight: bold;
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.vitoria-casa      { color: green; }
+.empate            { color: #888; }
+.vitoria-visitante { color: #c00; }
+
+/* Separador de seção */
+.secao {
+  margin-bottom: 1.5rem;
 }
